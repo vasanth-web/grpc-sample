@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package sample;
+
+option java_package = "com.proto.sample";
+
+service sample {
+  rpc save(stream SaveRequest) returns (stream SaveResponse) {};
+}
+
+enum Status {
+  INITIAL = 0;
+  SUCCESS = 1;
+  FAILURE = 2;
+}
+
+message SaveRequest {
+  int32 id = 1;
+}
+
+message SaveResponse {
+  Status status = 1;
+  int32 id = 2;
+  string message = 3;
+}
